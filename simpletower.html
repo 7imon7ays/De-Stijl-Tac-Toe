@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+		<script src="simpletower.js"></script>
+		<style>
+
+		div {
+			float: left;
+			width: 33%;
+		}
+
+		#inputsection {
+			width: 40%;
+			margin: 0 auto;
+		}
+
+		section {
+			clear: both;
+		}
+
+		</style>
+	</head>
+	<body>
+
+		<section>
+		<div>
+			<pre id="tower1">
+
+
+
+			</pre>
+		</div>
+
+		<div>
+			<pre id="tower2">
+			</pre>
+		</div>
+
+		<div>
+			<pre id="tower3">
+			</pre>
+		</div>
+	</section>
+	<section id="inputsection">
+		<span>
+			<label for="start_input">From</label>
+			<input type="text" id="start_input">
+		</span>
+		<span>
+			<label for="target_input">To</label>
+			<input type="text" id="target_input">
+		</span>
+		<button>Submit!</button>
+	</section>
+
+	<div id="error_div">
+	</div>
+	</body>
+</html>
