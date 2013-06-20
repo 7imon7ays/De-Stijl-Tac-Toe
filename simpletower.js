@@ -34,26 +34,35 @@ var Game = (function() {
 
 	Hanoi.prototype.show = function() {
 		var that = this;
-		console.log("Original array " + that.towers[0]);
-		console.log("Second array " + that.towers[1]);
-		console.log("Final array " + that.towers[2]);
 	};
 
 
-	return new Hanoi(3);
+	return new Hanoi(5);
 });
 
 
-$(document).ready(function(){
+// $(document).ready(function(){
 	function Play() {
 		this.game = Game();
 	}
 
 	Play.prototype.renderTowers = function() {
 		var towers = this.game.towers;
-		$('pre').each(function(index, tower){
-			console.log('tower is ' + tower);
-			$(tower).text(towers[index]);
+		$('div').remove();
+		_.each(towers, function(tower, index){
+			_.each(tower, function(discSize, discIndex){
+				var width = (discSize * 20) + 'px';
+				var $newDisc = $('<div>');
+				$newDisc.css('width', width);
+				$newDisc.draggable({
+					appendTo: 'body',
+					cursor: "move",
+			    helper: 'clone',
+			    revert: "invalid"
+				});
+				$($('article')[index]).prepend($newDisc);
+			});
+
 		});
 	}
 
@@ -68,13 +77,24 @@ $(document).ready(function(){
 
 	Play.prototype.begin = function() {
 		var play = this;
-		$('button').on('click', function () {
-			var originIndex = $('#start_input').val();
-			var targetIndex = $('#target_input').val();
-			var origin = play.game.towers[originIndex - 1];
-			var target = play.game.towers[targetIndex - 1];
+		$('article').droppable({
+			tolerance: "intersect",
+			accept: 'div',
+			drop: function(event, ui){
+				$(this).append($(ui.draggable));
+			}
+		});
 
-			play.game.move(origin, target);
+		var towers = play.game.towers;
+		var directions = { origin: null, destination: null };
+
+		$('article').on('mousedown', function () {
+			directions.origin = $(this).index();
+		});
+
+		$('article').on('mouseup', function(){
+			directions.destination = $(this).index();
+			play.game.move(towers[directions.origin], towers[directions.destination]);
 			play.renderTowers();
 			play.renderErrors();
 		});
@@ -83,8 +103,3 @@ $(document).ready(function(){
 	var newGame = new Play();
 	newGame.renderTowers();
 	newGame.begin();
-});
-
-
-
-

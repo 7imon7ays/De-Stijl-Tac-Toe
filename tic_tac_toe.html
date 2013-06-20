@@ -1,8 +1,8 @@
 <html>
 <head>
+	<title>Piet Mondrian's Tic Tac Toe</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-	<script src="tic_tac_toe.js"></script>
 	<style>
 		html, body {
 			margin: 0;
@@ -15,32 +15,47 @@
 		div {
 			clear: both;
 			height:300px;
+			margin: 0 auto;
+			width: 99%;
 		}
 
 		span {
-			border: 8px solid black;
+			border: 7px solid black;
 			width: 33%;
 			height: 100%;
 			float: left;
+		}
+
+		.blue {
+			background: blue;
+		}
+
+		.red {
+			background: red;
+		}
+
+		.yellow {
+			background: yellow;
 		}
 
 	</style>
 </head>
 	<body>
 		<div>
-			<span></span>
-			<span></span>
-			<span></span>
+			<span class="col1"></span>
+			<span class="col2"></span>
+			<span class="col3"></span>
 		</div>
 		<div>
-			<span></span>
-			<span></span>
-			<span></span>
+			<span class="col1"></span>
+			<span class="col2"></span>
+			<span class="col3"></span>
 		</div>
 		<div>
-			<span></span>
-			<span></span>
-			<span></span>
+			<span class="col1"></span>
+			<span class="col2"></span>
+			<span class="col3"></span>
 		</div>
 	</body>
+	<script src="tic_tac_toe.js"></script>
 </html>
